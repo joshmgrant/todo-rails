@@ -1,0 +1,6 @@
+class RandoController < ApplicationController
+  def index
+    rando = Random.rand
+    render json: rando
+  end
+end
