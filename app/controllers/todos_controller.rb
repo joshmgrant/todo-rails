@@ -10,6 +10,12 @@ class TodosController < ApplicationController
     render json: todo, status: :created
   end
 
+  def show
+    todo = Todo.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render plain: 'Todo not found', status: :not_found
+  end
+
   def update
     todo = Todo.find(params[:id])
     todo.update(todo_param)
